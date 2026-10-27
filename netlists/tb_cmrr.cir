@@ -1,0 +1,16 @@
+* Common-mode AC gain (inputs tied together through C), CMRR = Adm/Acm
+.include corner.inc
+.include models.lib
+.include opamp.cir
+Vdd vdd 0 {vdd_val}
+Iref vdd ibias 20u
+Vcm cm 0 dc {vdd_val/2} ac 1
+Lfb out inn 1G
+Cfb inn cm 1G
+XU1 cm inn out vdd 0 ibias opamp
+CL out 0 2p
+.control
+ac dec 40 1 1G
+wrdata ../results/ac_cm.dat v(out)
+.endc
+.end

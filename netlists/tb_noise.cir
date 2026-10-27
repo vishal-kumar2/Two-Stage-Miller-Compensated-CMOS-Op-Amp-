@@ -1,0 +1,20 @@
+* Input-referred noise
+.include corner.inc
+.include models.lib
+.include opamp.cir
+Vdd vdd 0 {vdd_val}
+Iref vdd ibias 20u
+Vcm cm 0 {vdd_val/2}
+Vin inp cm dc 0 ac 1
+Lfb out inn 1G
+Cfb inn 0 1G
+XU1 inp inn out vdd 0 ibias opamp
+CL out 0 2p
+.control
+noise v(out) Vin dec 20 1 100Meg
+setplot noise1
+wrdata ../results/noise_in.dat inoise_spectrum
+setplot noise2
+print inoise_total
+.endc
+.end

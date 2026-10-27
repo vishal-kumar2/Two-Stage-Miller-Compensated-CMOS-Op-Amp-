@@ -1,0 +1,24 @@
+* Open-loop AC: gain, UGB, PM. DC loop closed with 1GH inductor, AC loop open.
+.include corner.inc
+.include models.lib
+.include opamp.cir
+Vdd vdd 0 {vdd_val}
+Iref vdd ibias 20u
+Vcm cm 0 {vdd_val/2}
+Vin inp cm dc 0 ac 1
+Lfb out inn 1G
+Cfb inn 0 1G
+XU1 inp inn out vdd 0 ibias opamp
+CL out 0 2p
+.control
+op
+let idd = -i(vdd)
+print idd
+let vos = v(out) - v(inp)
+print vos
+print @m.xu1.m3[gm] @m.xu1.m1[gm] @m.xu1.m6[gm] @m.xu1.m1[gds] @m.xu1.m2[gds] @m.xu1.m4[gds] @m.xu1.m6[gds] @m.xu1.m7[gds]
+print @m.xu1.m1[vdsat] @m.xu1.m3[vdsat] @m.xu1.m5[vdsat] @m.xu1.m6[vdsat] @m.xu1.m7[vdsat]
+ac dec 40 1 1G
+wrdata ../results/ac_open_loop.dat v(out)
+.endc
+.end

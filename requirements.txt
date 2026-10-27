@@ -1,0 +1,3 @@
+numpy
+matplotlib
+# plus ngspice (>= 40) on PATH:  sudo apt install ngspice   |  brew install ngspice

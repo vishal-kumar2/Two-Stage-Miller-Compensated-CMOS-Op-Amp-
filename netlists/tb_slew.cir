@@ -1,0 +1,14 @@
+* Unity-gain follower, large step -> slew rate
+.include corner.inc
+.include models.lib
+.include opamp.cir
+Vdd vdd 0 {vdd_val}
+Iref vdd ibias 20u
+Vin inp 0 PWL(0 0.7 1u 0.7 1.001u 1.4 3u 1.4 3.001u 0.7 5u 0.7)
+XU1 inp out out vdd 0 ibias opamp
+CL out 0 2p
+.control
+tran 1n 5u
+wrdata ../results/tran_slew.dat v(inp) v(out)
+.endc
+.end

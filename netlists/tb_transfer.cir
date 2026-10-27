@@ -1,0 +1,15 @@
+* Open-loop DC transfer: output swing, offset, DC gain
+.include corner.inc
+.include models.lib
+.include opamp.cir
+Vdd vdd 0 {vdd_val}
+Iref vdd ibias 20u
+Vref inn 0 0.9
+Vin inp 0 0.9
+XU1 inp inn out vdd 0 ibias opamp
+CL out 0 2p
+.control
+dc Vin 0.8995 0.9005 2u
+wrdata ../results/dc_transfer.dat v(out)
+.endc
+.end

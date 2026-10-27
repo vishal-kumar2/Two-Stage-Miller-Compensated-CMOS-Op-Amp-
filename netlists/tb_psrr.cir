@@ -1,0 +1,16 @@
+* Supply-to-output AC gain, PSRR = Adm/Avdd
+.include corner.inc
+.include models.lib
+.include opamp.cir
+Vdd vdd 0 dc {vdd_val} ac 1
+Iref vdd ibias 20u
+Vcm cm 0 {vdd_val/2}
+Lfb out inn 1G
+Cfb inn 0 1G
+XU1 cm inn out vdd 0 ibias opamp
+CL out 0 2p
+.control
+ac dec 40 1 1G
+wrdata ../results/ac_psrr.dat v(out)
+.endc
+.end

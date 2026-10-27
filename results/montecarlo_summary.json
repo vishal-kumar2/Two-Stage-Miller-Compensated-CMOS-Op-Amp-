@@ -1,0 +1,12 @@
+{
+  "samples": 300,
+  "seed": 2027,
+  "mean_mV": -0.034,
+  "sigma_mV": 3.647,
+  "three_sigma_mV": 10.94,
+  "min_mV": -10.6,
+  "max_mV": 9.85,
+  "hand_calc_sigma_mV": 3.673,
+  "AVT_mV_um": 5.0,
+  "Abeta_pct_um": 1.0
+}

@@ -1,0 +1,26 @@
+{
+  "a0_db": {
+    "min": 69.6,
+    "max": 79.24,
+    "min_at": "SS/1.8V/125C",
+    "max_at": "FF/1.98V/-40C"
+  },
+  "ugf_mhz": {
+    "min": 29.94,
+    "max": 54.48,
+    "min_at": "SS/1.62V/125C",
+    "max_at": "FF/1.98V/-40C"
+  },
+  "pm_deg": {
+    "min": 65.67,
+    "max": 75.88,
+    "min_at": "FS/1.62V/125C",
+    "max_at": "SF/1.62V/-40C"
+  },
+  "idd_uA": {
+    "min": 252.32,
+    "max": 267.11,
+    "min_at": "SS/1.62V/-40C",
+    "max_at": "FF/1.98V/125C"
+  }
+}

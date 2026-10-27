@@ -1,0 +1,18 @@
+* Two-stage Miller-compensated CMOS op-amp
+* Ports: inp inn out vdd vss ibias(sink reference current into M8)
+.subckt opamp inp inn out vdd vss ibias
+* Bias mirror
+M8 ibias ibias vss vss nmos w=5u  l=0.5u
+M5 tail  ibias vss vss nmos w=10u l=0.5u
+* First stage: NMOS diff pair + PMOS mirror load
+M1 d1 inn tail vss nmos w=5u l=0.5u
+M2 d2 inp tail vss nmos w=5u l=0.5u
+M3 d1 d1 vdd vdd pmos w=7u l=0.5u
+M4 d2 d1 vdd vdd pmos w=7u l=0.5u
+* Second stage: PMOS common-source + NMOS current-source load
+M6 out d2 vdd vdd pmos w=70u l=0.5u
+M7 out ibias vss vss nmos w=50u l=0.5u
+* Miller compensation with nulling resistor
+Cc d2 cz 1p
+Rz cz out 600
+.ends opamp
